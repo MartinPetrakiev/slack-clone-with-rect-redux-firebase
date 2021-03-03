@@ -32,8 +32,7 @@ function Chat() {
     }, [roomId, loading])
     return (
         <ChatContainer className="chat">
-            <img src="" alt="" />
-            {roomDetails && roomMessages && (
+            {(roomDetails && roomMessages) ? (
                 <>
                     <Header>
                         <HederLeft>
@@ -43,7 +42,7 @@ function Chat() {
                         <HeaderRight>
                             <p>
                                 <InfoOutlined /> Details
-                    </p>
+                        </p>
                         </HeaderRight>
                     </Header>
                     <ChatMessages>
@@ -67,7 +66,19 @@ function Chat() {
                         channelId={roomId}
                     />
                 </>
-            )}
+            ) :
+                (
+                    <WelcomeContainer>
+                        <div>
+                            <h1>&#x1f44b;</h1>
+                            <h1>Welcome</h1>
+                            <h2>to</h2>
+                            <h1 class='wel-msg'>Martin's Slack Clone</h1>
+                            <p>Sleect a channel or create new and start chatting</p>
+                        </div>
+                    </WelcomeContainer>
+                )
+            }
 
         </ChatContainer>
     );
@@ -76,10 +87,10 @@ function Chat() {
 export default Chat;
 
 const ChatContainer = styled.div`
+    margin-top: 60px;
     flex: 0.7;
     flex-grow: 1;
     overflow-y: scroll;
-    margin-top: 35px;
     ::-webkit-scrollbar {
      width: 8px;
      background-color: lightgray;
@@ -91,7 +102,6 @@ const ChatContainer = styled.div`
 const Header = styled.div`
     position: fixed;
     width: 80%;
-    margin-top: 3px;
     display: flex;
     justify-content: space-between;
     padding: 20px;
@@ -128,10 +138,33 @@ const HeaderRight = styled.div`
 
 `;
 const ChatMessages = styled.div`
-    margin-top: 5%;
+    margin-top: 65px;
     
 `;
 const ChatBottom = styled.div`
     margin: 100px;
+`;
+
+const WelcomeContainer = styled.div`
+    display: flex;
+    justify-content: center;
+    margin-top: 15%;
+    >div {
+        padding: 50px;
+        text-align: center;
+        background-color: whitesmoke;
+        border-radius: 10px;
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+        >p {
+            margin-top: 20px;
+            font-style: italic;
+        }
+        .wel-msg{
+            font-style: italic;
+            font-weight: 900;
+            font-size: 40px;
+            color:  var(--slack-color);
+        }
+    }
 `;
 

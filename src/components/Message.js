@@ -7,7 +7,7 @@ function Message({ message, timestamp, user, userImage }) {
             <img src={userImage} alt="" />
             <MessageInfo>
                 <h4>
-                    {user} <span>{new Date(timestamp?.toDate()).toUTCString()}</span>
+                    {user} <span>{new Date(timestamp?.toDate()).toLocaleString()}</span>
                 </h4>
                 <p>{message}</p>
             </MessageInfo>
@@ -20,7 +20,7 @@ export default Message;
 const MessageContainer = styled.div`
     display: flex;
     align-items: center;
-    padding: 20px;
+    padding: 16px;
     > img {
         height: 50px;
         border-radius: 8px;

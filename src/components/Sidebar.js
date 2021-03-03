@@ -15,6 +15,7 @@ import {
     Add,
 } from '@material-ui/icons';
 import SidebarOption from './SidebarOption';
+import MainOptions from './MainOptions';
 import { useCollection } from 'react-firebase-hooks/firestore';
 import { db } from '../firebase';
 import { useAuthState } from 'react-firebase-hooks/auth';
@@ -27,7 +28,7 @@ function Sidebar() {
         <SidebarConteriner className="sidebar">
             <SidebarHeader>
                 <SidebarInfo>
-                    <h2>Slack</h2>
+                    <h2>:COMPANY NAME:</h2>
                     <h3>
                         <FiberManualRecord />
                         {user?.displayName}
@@ -35,14 +36,14 @@ function Sidebar() {
                 </SidebarInfo>
                 <Create />
             </SidebarHeader>
-            <SidebarOption Icon={InsertComment} title="Threads" />
-            <SidebarOption Icon={AlternateEmail} title="Mentions & reactions" />
-            <SidebarOption Icon={BookmarkBorder} title="Saved" />
-            <SidebarOption Icon={ViewList} title="Channel browser" />
-            <SidebarOption Icon={PeopleAlt} title="People & user groups" />
-            <SidebarOption Icon={Apps} title="Apps" />
-            <SidebarOption Icon={FileCopy} title="File browser" />
-            <SidebarOption Icon={ExpandLess} title="Show less" />
+            <MainOptions Icon={InsertComment} title="Threads" />
+            <MainOptions Icon={AlternateEmail} title="Mentions & reactions" />
+            <MainOptions Icon={BookmarkBorder} title="Saved" />
+            <MainOptions Icon={ViewList} menuOption title="Channel browser" />
+            <MainOptions Icon={PeopleAlt} title="People & user groups" />
+            <MainOptions Icon={Apps} title="Apps" />
+            <MainOptions Icon={FileCopy} title="File browser" />
+            <MainOptions Icon={ExpandLess} title="Show less" />
             <hr />
             <SidebarOption Icon={ExpandMore} title="Channels" />
             <hr />
