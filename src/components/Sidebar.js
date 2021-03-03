@@ -4,10 +4,10 @@ import {
     FiberManualRecord,
     Create,
     InsertComment,
-    Inbox,
-    Drafts,
+    ViewList,
     BookmarkBorder,
     PeopleAlt,
+    AlternateEmail,
     Apps,
     FileCopy,
     ExpandLess,
@@ -29,16 +29,16 @@ function Sidebar() {
                 <SidebarInfo>
                     <h2>Slack</h2>
                     <h3>
-                        <FiberManualRecord/>
+                        <FiberManualRecord />
                         {user?.displayName}
                     </h3>
                 </SidebarInfo>
                 <Create />
             </SidebarHeader>
             <SidebarOption Icon={InsertComment} title="Threads" />
-            <SidebarOption Icon={Inbox} title="Mentions & reactions" />
-            <SidebarOption Icon={Drafts} title="Saved" />
-            <SidebarOption Icon={BookmarkBorder} title="Channel browser" />
+            <SidebarOption Icon={AlternateEmail} title="Mentions & reactions" />
+            <SidebarOption Icon={BookmarkBorder} title="Saved" />
+            <SidebarOption Icon={ViewList} title="Channel browser" />
             <SidebarOption Icon={PeopleAlt} title="People & user groups" />
             <SidebarOption Icon={Apps} title="Apps" />
             <SidebarOption Icon={FileCopy} title="File browser" />

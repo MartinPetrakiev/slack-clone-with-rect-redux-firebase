@@ -22,6 +22,9 @@ function Chat() {
             .orderBy('timestamp', 'asc')
     );
 
+    chatRef?.current?.scrollIntoView({
+        behavior: 'smooth'
+    });
     useEffect(() => {
         chatRef?.current?.scrollIntoView({
             behavior: 'smooth'
@@ -29,20 +32,20 @@ function Chat() {
     }, [roomId, loading])
     return (
         <ChatContainer className="chat">
-            <img src="" alt=""/>
+            <img src="" alt="" />
             {roomDetails && roomMessages && (
-                <>           
-                 <Header>
-                    <HederLeft>
-                        <h4><strong>#{roomDetails?.data().name}</strong></h4>
-                        <StarBorderOutlined />
-                    </HederLeft>
-                    <HeaderRight>
-                        <p>
-                            <InfoOutlined /> Details
+                <>
+                    <Header>
+                        <HederLeft>
+                            <h4><strong>#{roomDetails?.data().name}</strong></h4>
+                            <StarBorderOutlined />
+                        </HederLeft>
+                        <HeaderRight>
+                            <p>
+                                <InfoOutlined /> Details
                     </p>
-                    </HeaderRight>
-                </Header>
+                        </HeaderRight>
+                    </Header>
                     <ChatMessages>
                         {roomMessages?.docs.map((doc) => {
                             const { message, timestamp, user, userImage } = doc.data();
@@ -86,10 +89,14 @@ const ChatContainer = styled.div`
     }
 `;
 const Header = styled.div`
+    position: fixed;
+    width: 80%;
+    margin-top: 3px;
     display: flex;
     justify-content: space-between;
     padding: 20px;
     border-bottom: 1px solid lightgray;
+    background-color: white;
 `;
 const HederLeft = styled.div`
     display: flex;
@@ -106,6 +113,8 @@ const HederLeft = styled.div`
     }
 `;
 const HeaderRight = styled.div`
+    position: fixed;
+    right: 20px;
     > p {
         display: flex;
         align-items: center;
@@ -119,7 +128,10 @@ const HeaderRight = styled.div`
 
 `;
 const ChatMessages = styled.div`
+    margin-top: 5%;
+    
 `;
 const ChatBottom = styled.div`
     margin: 100px;
 `;
+

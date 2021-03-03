@@ -4,6 +4,7 @@ import { Button } from '@material-ui/core';
 import { auth, db } from '../firebase';
 import firebase from 'firebase';
 import { useAuthState } from 'react-firebase-hooks/auth';
+import { Send } from '@material-ui/icons';
 
 function ChatInput({ channelName, channelId, chatRef }) {
     const [input, setInput] = useState('');
@@ -13,7 +14,9 @@ function ChatInput({ channelName, channelId, chatRef }) {
         if (!channelId) {
             return alert('Please enter a channel first!');
         }
-
+        if(!input) {
+            return;
+        }
         db.collection('rooms')
             .doc(channelId)
             .collection('messages')
@@ -35,7 +38,7 @@ function ChatInput({ channelName, channelId, chatRef }) {
                     onChange={(e) => setInput(e.target.value)}
                     placeholder={`Message #${channelName ? channelName : ''}`} />
                 <Button type='submit' onClick={sendMessage}>
-                    SEND
+                    <SendIcon />
                 </Button>
             </form>
         </ChatInputContainer>
@@ -45,10 +48,8 @@ function ChatInput({ channelName, channelId, chatRef }) {
 export default ChatInput;
 
 const ChatInputContainer = styled.div`
-    margin: 80px;
-
+   
     > form {
-        position: relative;
         display: flex;
         justify-content: center;
     }
@@ -64,6 +65,20 @@ const ChatInputContainer = styled.div`
     }
 
     > form > button {
-        display: none !important;
+        position: fixed; 
+        bottom: 17px;
+        margin-left: 57%;
+        background: #007a5a;
+        width: 25px;
+        height: 32px;
+        .MuiSvgIcon-root {
+        width: 18px;
+        }
+        :hover {
+            background: #148567
+        }
     }
 `;
+const SendIcon = styled(Send)`
+    color: #D9D9D9
+`
